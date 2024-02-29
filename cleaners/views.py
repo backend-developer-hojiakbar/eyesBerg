@@ -1,3 +1,8 @@
 from django.shortcuts import render
+from rest_framework import viewsets
+from .models import Cleaner
+from .serializers import CleanerSerializer
 
-# Create your views here.
+class CleanerViewSet(viewsets.ModelViewSet):
+    queryset = Cleaner.objects.all()
+    serializer_class = CleanerSerializer

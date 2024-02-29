@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,12 +33,14 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # local
     'cleaners',
 
 
@@ -47,9 +51,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework.authtoken',
     'parler',
+
     
-    # local
-    'ckeditor',
 
 
 
@@ -297,13 +300,13 @@ JAZZMIN_UI_TWEAKS = {
 JAZZMIN_SETTINGS = {
     "topmenu_links"
     # title of the window (Will default to current_admin_site.site_title if absent or None)
-    "site_title": "B2B",
+    "site_title": "eyesBERG",
 
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_header": "B2B Admin",
+    "site_header": "eyesBERG Admin",
 
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_brand": "B2B",
+    "site_brand": "eyesBERG",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
     # "site_logo": "img\logo.png",
@@ -319,10 +322,10 @@ JAZZMIN_SETTINGS = {
     "site_icon": None,
 
     # Welcome text on the login screen
-    "welcome_sign": "Welcome to B2B!",
+    "welcome_sign": "Welcome to eyesBERG!",
 
     # Copyright on the footer
-    "copyright": "B2B contributors",
+    "copyright": "eyesBERG contributors",
 
     # # The model admin to search from the search bar, search bar omitted if excluded
     # "search_model": "myprint.Product",
