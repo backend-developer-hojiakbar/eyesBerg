@@ -25,16 +25,16 @@ class CleanerSearchViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
                          (Q(cv__icontains=x) for x in text_seq))
 
         return self.queryset.filter(text_qs)
-# class CleanerCommentListCreateView(generics.ListCreateAPIView):
-#     queryset = CleanerComment.objects.all()
-#     serializer_class = CleanerCommentSerializer
-#
-#     def get_queryset(self):
-#         cleaner_id = self.kwargs.get('cleaner_id')
-#         return CleanerComment.objects.filter(cleaner_id=cleaner_id)
-#     def perform_create(self, serializer):
-#         cleaner_id = self.kwargs.get('cleaner_id')
-#         cleaner = get_object_or_404(Cleaner, id=cleaner_id)
-#         if CleanerComment.objects.filter(cleaner=cleaner, author=self.request.user).exists():
-#             raise serializers.ValidationError({'Message': 'You have already added comment on this cleaner'})
-#         serializer.save(cleaner=self.request.user)
+class CleanerCommentListCreateView(generics.ListCreateAPIView):
+    queryset = CleanerComment.objects.all()
+    serializer_class = CleanerCommentSerializer
+
+    def get_queryset(self):
+        cleaner_id = self.kwargs.get('cleaner_id')
+        return CleanerComment.objects.filter(cleaner_id=cleaner_id)
+    def perform_create(self, serializer):
+        cleaner_id = self.kwargs.get('cleaner_id')
+        cleaner = get_object_or_404(Cleaner, id=cleaner_id)
+        if CleanerComment.objects.filter(cleaner=cleaner, author=self.request.user).exists():
+            raise serializers.ValidationError({'Message': 'You have already added comment on this cleaner'})
+        serializer.save(cleaner=self.request.user)

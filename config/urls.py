@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
-
+from cleaners.views import CleanerCommentListCreateView
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -43,6 +43,8 @@ urlpatterns += [
     # path('blog/', include('apps.blog.urls')),
     # path('order/', include('apps.order.api.urls')),
     path('accounts/', include('accounts.urls')),
+    path('cleaner-comments/<int:cleaner_id>/', CleanerCommentListCreateView.as_view(), name='cleaner-comments')
+
 ]
 
 if settings.DEBUG:
